@@ -1,8 +1,8 @@
-import 'package:book_grocer/view/search/search_fiter_view.dart';
-import 'package:book_grocer/view/search/search_force_view.dart';
+import 'package:hekaya/view/search/search_filter_view.dart';
+import 'package:hekaya/view/search/search_force_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/color_extenstion.dart';
+import '../../common/color_extension.dart';
 import '../../common_widget/history_row.dart';
 import '../../common_widget/search_grid_cell.dart';
 import '../../common/extension.dart';
