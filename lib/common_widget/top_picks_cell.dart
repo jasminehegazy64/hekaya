@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'lib/common/color_extension.dart';
+import '../../common/color_extension.dart';
 
 class TopPicksCell extends StatelessWidget {
   final Map iObj;

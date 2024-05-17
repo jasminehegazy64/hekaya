@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import 'lib/common/color_extension.dart';
+import '../../common/color_extension.dart';
 
 class BestSellerCell extends StatelessWidget {
   final Map bObj;
