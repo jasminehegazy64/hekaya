@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hekaya/common/color_extension.dart';
 import 'package:hekaya/view/login/forget_password_view.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,21 @@ class _SignInViewState extends State<SignInView> {
   TextEditingController txtEmail = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
   bool isStay = false;
+  Future<User?> signInWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      UserCredential result =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: txtEmail.text,
+        password: txtPassword.text,
+      );
+      User? user = result.user;
+      return user;
+    } catch (error) {
+      print('error signing in: $error');
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
