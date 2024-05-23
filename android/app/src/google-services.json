@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "924821730440",
+    "project_id": "hekaya-8d25d",
+    "storage_bucket": "hekaya-8d25d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924821730440:android:40bc943ddf54d397e41b3d",
+        "android_client_info": {
+          "package_name": "com.codeforany.book_grocer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABxr72J3yEW90PfyiRznRwAPCcM-qm9xU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

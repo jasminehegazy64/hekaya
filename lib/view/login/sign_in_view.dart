@@ -119,7 +119,7 @@ class _SignInViewState extends State<SignInView> {
               ),
               RoundLineButton(
                 title: "Sign In",
-                onPressed: () {},
+                onPressed: () {}, //JASMINE ADD THE FIREBASE HERE ?
               )
             ],
           ),

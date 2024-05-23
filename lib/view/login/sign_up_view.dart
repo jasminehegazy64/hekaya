@@ -1,6 +1,7 @@
 import 'package:hekaya/view/login/help_us_view.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../common/color_extension.dart';
 import '../../common_widget/round_button.dart';
 import '../../common_widget/round_textfield.dart';
@@ -19,6 +20,38 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController txtCode = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
   bool isStay = false;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> signUp() async {
+    try {
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: txtEmail.text,
+        password: txtPassword.text,
+      );
+
+      User? user = userCredential.user;
+      if (user != null) {
+        await _firestore.collection('users').doc(user.uid).set({
+          'first_name': txtFirstName.text,
+          'email': txtEmail.text,
+          'mobile': txtMobile.text,
+          'code': txtCode.text,
+          'is_stay': isStay,
+        });
+
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const HelpUsView()),
+        );
+      }
+    } catch (e) {
+      print('Error: $e');
+      // You can show an error message to the user if sign up fails
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,15 +141,6 @@ class _SignUpViewState extends State<SignUpView> {
                           : TColor.subTitle.withOpacity(0.3),
                     ),
                   ),
-                  Expanded(
-                    child: Text(
-                      "Please sign me up for the monthly newsletter.",
-                      style: TextStyle(
-                        color: TColor.subTitle.withOpacity(0.3),
-                        fontSize: 13,
-                      ),
-                    ),
-                  ),
                 ],
               ),
               const SizedBox(
@@ -138,3 +162,4 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 }
+ //JASMINE all these things needs to be added to the firebase 

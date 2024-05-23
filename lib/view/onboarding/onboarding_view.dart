@@ -14,19 +14,18 @@ class _OnboardingViewState extends State<OnboardingView> {
   PageController? controller = PageController();
   List pageArr = [
     {
-      "title": "Discounted\nSecondhand Books",
-      "sub_title": "Used and near new secondhand books at great prices.",
+      "title": "Hekaya",
+      "sub_title": "All in one book app in the palm of your hand",
       "img": "assets/img/on_1.png"
     },
     {
-      "title": "20 Book Grocers\nNationally",
-      "sub_title": "We've successfully opened 20 stores across Australia.",
-      "img": "assets/img/on_2.png"
+      "title": "Read, Buy\n Navigate all your Favs!",
+      "sub_title": "A wide selection for you to hand pick",
+      "img": "assets/img/on_2.jpg"
     },
     {
-      "title": "Sell or Recycle Your Old\nBooks With Us",
-      "sub_title":
-          "If you're looking to downsize, sell or recycle old books, the Book Grocer can help.",
+      "title": "Add your own books",
+      "sub_title": "Simply add your previosuly owned E-books in your library",
       "img": "assets/img/on_3.png"
     },
   ];
