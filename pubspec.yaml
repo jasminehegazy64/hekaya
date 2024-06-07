@@ -4,23 +4,22 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: '>=3.3.1 <4.0.0'
 
 dependencies:
   carousel_slider: ^4.2.1
+  cloud_firestore: ^4.17.4
+  firebase_auth: ^4.19.6
   flutter:
     sdk: flutter
   flutter_rating_bar: ^4.0.1
-  cupertino_icons: ^1.0.2
-  firebase_auth: ^4.2.1
-  firebase_core: ^2.4.0
-  firebase_database: ^10.4.9
-  cloud_firestore: ^4.1.0
+  intl: ^0.19.0
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
@@ -28,6 +27,28 @@ flutter:
   assets:
     - assets/img/
     - assets/fonts/
+    - assets/img/1.jpg
+    - assets/img/2.jpg
+    - assets/img/3.jpg
+    - assets/img/4.jpg
+    - assets/img/5.jpg
+    - assets/img/6.jpg
+    - assets/img/7.jpg
+    - assets/img/10.jpg
+    - assets/img/11.jpg
+    - assets/img/12.jpg
+    - assets/img/b2.jpg
+    - assets/img/b3.jpg
+    - assets/img/b4.jpg
+    - assets/img/b5.jpg
+    - assets/img/b6.jpg
+    - assets/img/g1.png
+    - assets/img/h1.jpg
+    - assets/img/h2.jpg
+    - assets/img/h3.jpg
+    - assets/img/ob1.png
+    - assets/img/ob2.png
+    - assets/img/ob3.png
   fonts:
     - family: SF Pro Text
       fonts:
@@ -41,3 +62,4 @@ flutter:
         - asset: assets/fonts/SF-Pro-Text-Thin.otf
         - asset: assets/fonts/SF-Pro-Text-ThinItalic.otf
         - asset: assets/fonts/SF-Pro-Text-Ultralight.otf
+
