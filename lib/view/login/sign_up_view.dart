@@ -1,12 +1,14 @@
 import 'package:hekaya/view/login/help_us_view.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hekaya/data/user_repository.dart';
+
 import '../../common/color_extension.dart';
 import '../../common_widget/round_button.dart';
 import '../../common_widget/round_textfield.dart';
 
 class SignUpView extends StatefulWidget {
+    static const routeName = '/add-user';
+
   const SignUpView({super.key});
 
   @override
@@ -19,40 +21,13 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController txtMobile = TextEditingController();
   TextEditingController txtCode = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
+  bool _isLoading = false;
   bool isStay = false;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<void> signUp() async {
-    try {
-      UserCredential userCredential =
-          await _auth.createUserWithEmailAndPassword(
-        email: txtEmail.text,
-        password: txtPassword.text,
-      );
-
-      User? user = userCredential.user;
-      if (user != null) {
-        await _firestore.collection('users').doc(user.uid).set({
-          'first_name': txtFirstName.text,
-          'email': txtEmail.text,
-          'mobile': txtMobile.text,
-          'code': txtCode.text,
-          'is_stay': isStay,
-        });
-
-        // ignore: use_build_context_synchronously
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const HelpUsView()),
-        );
-      }
-    } catch (e) {
-      print('Error: $e');
-      // You can show an error message to the user if sign up fails
-    }
+  @override
+  void initState() {
+    super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,6 +64,7 @@ class _SignUpViewState extends State<SignUpView> {
               RoundTextField(
                 controller: txtFirstName,
                 hintText: "First & Last Name",
+                keyboardType: TextInputType.name,
               ),
               const SizedBox(
                 height: 15,
@@ -122,6 +98,7 @@ class _SignUpViewState extends State<SignUpView> {
                 controller: txtPassword,
                 hintText: "Password",
                 obscureText: true,
+                keyboardType: TextInputType.visiblePassword,
               ),
               const SizedBox(
                 height: 15,
@@ -141,6 +118,7 @@ class _SignUpViewState extends State<SignUpView> {
                           : TColor.subTitle.withOpacity(0.3),
                     ),
                   ),
+                  
                 ],
               ),
               const SizedBox(
@@ -149,6 +127,19 @@ class _SignUpViewState extends State<SignUpView> {
               RoundLineButton(
                 title: "Sign Up",
                 onPressed: () {
+                  setState(() {
+                          _isLoading = true;
+                        });
+                        registerUser(
+                          name: txtFirstName.text,
+                          email: txtEmail.text,
+                          phoneNumber: txtMobile.text,
+                          password: txtPassword.text,
+                          role: "user",
+                        );
+                        setState(() {
+                          _isLoading = false;
+                        });
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -162,4 +153,3 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 }
- //JASMINE all these things needs to be added to the firebase 

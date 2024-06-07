@@ -15,19 +15,20 @@ class _OnboardingViewState extends State<OnboardingView> {
   List pageArr = [
     {
       "title": "Hekaya",
-      "sub_title": "All in one book app in the palm of your hand",
+      "sub_title": "Read your books whenever you like",
       "img": "assets/img/on_1.png"
     },
     {
-      "title": "Read, Buy\n Navigate all your Favs!",
-      "sub_title": "A wide selection for you to hand pick",
-      "img": "assets/img/on_2.jpg"
+      "title": "All in one\nbook app",
+      "sub_title": "Read, buy your books all in one place",
+      "img": "assets/img/on_2.png"
     },
-    {
-      "title": "Add your own books",
-      "sub_title": "Simply add your previosuly owned E-books in your library",
-      "img": "assets/img/on_3.png"
-    },
+    // {
+    //   "title": "Sell or Recycle Your Old\nBooks With Us",
+    //   "sub_title":
+    //       "If you're looking to downsize, sell or recycle old books, the Book Grocer can help.",
+    //   "img": "assets/img/on_3.png"
+    // },
   ];
 
   @override
@@ -135,7 +136,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                     ),
                     TextButton(
                         onPressed: () {
-                          if (page < 2) {
+                          if (page < 1) {
                             page = page + 1;
                             controller?.jumpToPage(page);
                           } else {
@@ -162,6 +163,29 @@ class _OnboardingViewState extends State<OnboardingView> {
           )
         ],
       )),
+    );
+  }
+}
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: TColor.primary,
+
+        fontFamily: 'SF Pro Text',
+      ),
+      home: const OnboardingView(),
     );
   }
 }

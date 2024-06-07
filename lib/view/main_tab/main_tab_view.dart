@@ -1,5 +1,6 @@
 import 'package:hekaya/common/color_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:hekaya/view/profile/feed_view.dart';
 
 import '../account/account_view.dart';
 import '../home/home_view.dart';
@@ -24,11 +25,6 @@ class _MainTabViewState extends State<MainTabView>
   List menuArr = [
     {"name": "Home", "icon": Icons.home},
     {"name": "Our Books", "icon": Icons.book},
-    {"name": "Our Stores", "icon": Icons.storefront},
-    {"name": "Careers", "icon": Icons.business_center},
-    {"name": "Sell With Us", "icon": Icons.attach_money},
-    {"name": "Newsletter", "icon": Icons.newspaper},
-    {"name": "Pop-up Leasing", "icon": Icons.open_in_new},
     {"name": "Account", "icon": Icons.account_circle}
   ];
 
@@ -90,7 +86,7 @@ class _MainTabViewState extends State<MainTabView>
                                           const OurBooksView()));
                               sideMenuScaffoldKey.currentState
                                   ?.closeEndDrawer();
-                            } else if (index == 7) {
+                            } else if (index == 2) {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -152,7 +148,7 @@ class _MainTabViewState extends State<MainTabView>
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          "Terns",
+                          "Terms",
                           style: TextStyle(
                               color: TColor.subTitle,
                               fontSize: 17,
@@ -184,7 +180,8 @@ class _MainTabViewState extends State<MainTabView>
         const HomeView(),
         const SearchView(),
         Container(),
-        Container(),
+        const FeedView(),
+        const FeedView(),
       ]),
       bottomNavigationBar: BottomAppBar(
         color: TColor.primary,
@@ -210,6 +207,13 @@ class _MainTabViewState extends State<MainTabView>
                 icon: Icon(Icons.shopping_bag),
                 text: "Cart",
               ),
+              Tab(
+                icon: Icon(Icons.bolt),
+                text: "Feed",
+              ),
+              
+              
+              
             ]),
       ),
     );

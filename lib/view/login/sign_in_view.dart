@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hekaya/common/color_extension.dart';
 import 'package:hekaya/view/login/forget_password_view.dart';
 import 'package:flutter/material.dart';
+
+import 'package:hekaya/data/user_repository.dart';
 
 import '../../common_widget/round_button.dart';
 import '../../common_widget/round_textfield.dart';
@@ -17,22 +18,8 @@ class _SignInViewState extends State<SignInView> {
   TextEditingController txtCode = TextEditingController();
   TextEditingController txtEmail = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
+  bool _isLoading = false;
   bool isStay = false;
-  Future<User?> signInWithEmailAndPassword(
-      String email, String password) async {
-    try {
-      UserCredential result =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: txtEmail.text,
-        password: txtPassword.text,
-      );
-      User? user = result.user;
-      return user;
-    } catch (error) {
-      print('error signing in: $error');
-      return null;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +64,7 @@ class _SignInViewState extends State<SignInView> {
               RoundTextField(
                 controller: txtEmail,
                 hintText: "Email Address",
+                keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(
                 height: 15,
@@ -85,6 +73,7 @@ class _SignInViewState extends State<SignInView> {
                 controller: txtPassword,
                 hintText: "Password",
                 obscureText: true,
+                keyboardType: TextInputType.visiblePassword,
               ),
               const SizedBox(
                 height: 15,
@@ -135,12 +124,28 @@ class _SignInViewState extends State<SignInView> {
               ),
               RoundLineButton(
                 title: "Sign In",
-                onPressed: () {}, //JASMINE ADD THE FIREBASE HERE ?
+                onPressed: () {setState(() {
+                            _isLoading = true;
+                          });
+                          loginUser(
+                            email: txtEmail.text,
+                            password: txtPassword.text,
+                            context: context,
+                          );
+                          setState(() {
+                            _isLoading = false;
+                          });},
               )
             ],
           ),
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    txtEmail.dispose();
+    txtPassword.dispose();
+    super.dispose();
   }
 }

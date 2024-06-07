@@ -31,6 +31,16 @@ class YourReviewRow extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.account_circle, color: Colors.black, size: 30),
+                  SizedBox(width: 10),
+                  Text('user read',
+                      style:
+                          TextStyle(color: TColor.subTitle.withOpacity(0.3))),
+                ],
+              ),
               Text(
                 sObj["description"].toString(),
                 maxLines: 2,

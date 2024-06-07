@@ -258,7 +258,7 @@ class _HomeViewState extends State<HomeView> {
                       height: media.width * 0.7,
                       child: ListView.builder(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 8),
+                              vertical: 10, horizontal: 8),
                           scrollDirection: Axis.horizontal,
                           itemCount: recentArr.length,
                           itemBuilder: ((context, index) {
@@ -272,74 +272,7 @@ class _HomeViewState extends State<HomeView> {
                     SizedBox(
                       height: media.width * 0.1,
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(children: [
-                        Text(
-                          "Monthly Newsletter",
-                          style: TextStyle(
-                              color: TColor.text,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w700),
-                        )
-                      ]),
-                    ),
-                    Container(
-                      width: double.maxFinite,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 20),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 15),
-                      decoration: BoxDecoration(
-                          color: TColor.textbox.withOpacity(0.4),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Receive our monthly newsletter and receive updates on new stock, books and the occasional promotion.",
-                              style: TextStyle(
-                                color: TColor.subTitle,
-                                fontSize: 12,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            RoundTextField(
-                              controller: txtName,
-                              hintText: "Name",
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            RoundTextField(
-                              controller: txtEmail,
-                              hintText: "Email Address",
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                MiniRoundButton(
-                                  title: "Sign Up",
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SignUpView()));
-                                  },
-                                )
-                              ],
-                            )
-                          ]),
-                    ),
-                    SizedBox(
-                      height: media.width * 0.1,
-                    ),
+                    
                   ],
                 )
               ],

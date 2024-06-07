@@ -2,11 +2,20 @@ import 'package:hekaya/common/color_extension.dart';
 import 'package:hekaya/view/main_tab/main_tab_view.dart';
 import 'package:hekaya/view/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
+import 'package:hekaya/utils/cache_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
+import 'dart:developer';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await CacheHelper.init();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: 'AIzaSyCb_40hHSGjh8XQfkczU37lN-3kym7IaWU',
+          messagingSenderId: '4729022730',
+          appId: '1:4729022730:android:56c80a223d78d14c0a32f3',
+          projectId: 'hekaya-4ee34'));
   runApp(const MyApp());
 }
 
@@ -17,38 +26,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hekaya',
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is n ot restarted.
         primaryColor: TColor.primary,
 
         fontFamily: 'SF Pro Text',
       ),
-      home: const MainTabView(),
+      home: const OnboardingView(),
     );
   }
 }
-
-
-// hagat zyada 
-
-//CLoudfirebase setup code
-// rules_version = '2';
-
-// service cloud.firestore {
-//   match /databases/{database}/documents {
-//     match /{document=**} {
-//       allow read, write: if
-//           request.time < timestamp.date(2024, 6, 22);
-//     }
-//   }
-// }

@@ -59,7 +59,7 @@ class _AccountViewState extends State<AccountView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Will Newman",
+                          "Jasmine Hegazy",
                           style: TextStyle(
                               color: TColor.text,
                               fontSize: 20,
@@ -103,7 +103,7 @@ class _AccountViewState extends State<AccountView> {
                   ),
                   Expanded(
                       child: Text(
-                    "Newcastle - Australia",
+                    "Rehab - Egypt",
                     style: TextStyle(color: TColor.subTitle, fontSize: 13),
                   )),
                   const SizedBox(
