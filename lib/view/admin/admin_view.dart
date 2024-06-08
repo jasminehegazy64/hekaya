@@ -6,9 +6,8 @@ class AdminDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Admin Dashboard'),
-      ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(title: Text('Admin Dashboard')),
       body: Column(
         children: [
           // User Monitoring Section
